@@ -1,0 +1,28 @@
+{
+  "name": "tiger/repository",
+  "description": "PHP Class Repository for the Tiger Framework",
+  "type": "library",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Rudy Mas",
+      "email": "rudy.mas@rmsoft.be",
+      "homepage": "https://www.rmsoft.be/",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">= 7.4",
+    "rudymas/pdo-ext": "^5",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tiger\\": "src/"
+    }
+  }
+}
