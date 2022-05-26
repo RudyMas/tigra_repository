@@ -1,16 +1,16 @@
-# PHP Class Repository for the Tiger Framework
+# PHP Class Repository for the Tigra Framework
 
-This is the Class Repository which is used by Tiger.
+This is the Class Repository which is used by Tigra.
 
 ## Installation
 Install the package using composer.
 ```
-composer require tiger/repository
+composer require tigra/repository
 ```
 
 or by editing composer.json yourself and adding:
 ```
 "require": {
-    "tiger/repository": "*"
+    "tigra/repository": "*"
 }
 ```
