@@ -12,7 +12,7 @@ use RudyMas\DBconnect;
  * @author      Rudy Mas <rudy.mas@rmsoft.be>
  * @copyright   2022, rmsoft.be. (https://www.rmsoft.be/)
  * @license     https://opensource.org/licenses/GPL-3.0 GNU General Public License, version 3 (GPL-3.0)
- * @version     7.4.0.5
+ * @version     7.4.0.6
  * @package     Tigra
  */
 class Repository
@@ -311,9 +311,15 @@ class Repository
         foreach ($data as $key => $item) {
             if (!empty($item)) {
                 if (empty($set)) {
-                    $set = "{$key} = '{$item}'";
+                    $set = "{$key} = {$this->cleanSQL($item)}";
                 } else {
-                    $set .= ", {$key} = '{$item}'";
+                    $set .= ", {$key} = {$this->cleanSQL($item)}";
+                }
+            } elseif (is_null($item) || $item === '') {
+                if (empty($set)) {
+                    $set = "{$key} = NULL";
+                } else {
+                    $set .= ", {$key} = NULL";
                 }
             }
         }
@@ -374,5 +380,17 @@ class Repository
             $ids = implode(',', $ids);
         }
         return $ids;
+    }
+
+    /**
+     * Make sure the data is clean for SQL
+     *
+     * @param $var
+     *
+     * @return string
+     */
+    public function cleanSQL($var): string
+    {
+        return $this->db->cleanSQL($var);
     }
 }
